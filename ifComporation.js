@@ -10,7 +10,8 @@ class Produto{
             <div class="produto">
                 <h2>${this.nome}</h2>
                 <p>${this.descricao}</p>
-                <p>${this.preco}</p>
+                <div class="preco">R$${this.preco},00</div>
+                <div class="cadastro">Cadastrado em: ${this.dataCadastro}</div>
             </div>
                 `
     }
@@ -24,9 +25,11 @@ class destaque extends Produto{
     mostrarDestaque(){
         return `
                 <div class="pDestaque">
-                <img class="imgDestaque"src="${this.imagem}"></img>
+                <img class="imgDestaque" src="${this.imagem}"></img>
                 <h2>${this.nome}</h2>
                 <p>${this.descricao}</p>
+                <div class="precoDestaque">R$${this.preco},00</div>
+                <div class="cadastroDestaque">Cadastrado em: ${this.dataCadastro}</div>
                 </div>
                `
     }
@@ -34,14 +37,17 @@ class destaque extends Produto{
 }
 
 const produto1 = new Produto("Tapete de Vaquinha", "25/12/2022", "Nosso tapete de vaquinha é o destaque perfeito para qualquer cômodo que ofereça mais do que apenas um aperto sob os pés", 38)
-const id = document.getElementById("produtos")
-id.insertAdjacentHTML('afterbegin',produto1.mostrarProduto())
+const id1 = document.getElementById("produto1")
+id1.insertAdjacentHTML('afterbegin',produto1.mostrarProduto())
 
 const produto2 = new Produto("Luminária de sapinho", "02/12/2022", "Caro Ebbo, você ilumina nosso dia (e noite) com sua personalidade brilhante.", 22)
-id.insertAdjacentHTML('afterbegin',produto2.mostrarProduto())
+const id2 = document.getElementById("produto2")
+id2.insertAdjacentHTML('afterbegin',produto2.mostrarProduto())
 
 const produto3 = new Produto("Vaso de planta de vaquinha", "05/11/2022", "Caro Ebbo, você ilumina nosso dia (e noite) com sua personalidade brilhante.", 18)
-id.insertAdjacentHTML('afterbegin',produto3.mostrarProduto())
+const id3 = document.getElementById("produto3")
+id3.insertAdjacentHTML('afterbegin',produto3.mostrarProduto())
 
-const imgDestaque = new destaque("Faça sua casa um lugar Feliz com nossos produtos", "20/12/2022", "De pelúcias a luzes noturnas e tudo mais, você encontrará uma linda decoração em forma de amigo projetada para fazer você sorrir.", 20, "https://cdn.shopify.com/s/files/1/0527/2659/5743/files/new_website_banner_web_3-04_2.jpg?v=1682709391");
-id.insertAdjacentHTML('afterbegin',imgDestaque.mostrarDestaque())
+const imgDestaque = new destaque("Luminária de Vaquinha", "20/12/2022", "Caro Ebbo, você ilumina nosso dia (e noite) com sua personalidade brilhante.", 20, "https://cdn.shopify.com/s/files/1/0527/2659/5743/products/ShopzokiCowLightOff_1800x1800.jpg?v=1669311428");
+const id4 = document.getElementById("produtoDestaque")
+id4.insertAdjacentHTML('afterbegin',imgDestaque.mostrarDestaque())
