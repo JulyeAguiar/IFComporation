@@ -1,3 +1,10 @@
+class Errocometido extends Error {
+    constructor(mensage){
+        super(mensage);
+        this.name = "Erro: está faltando adicionar os atributos";
+    }
+}
+
 class Produto{
     constructor(nome, dataCadastro, descricao, preco){
         this.nome = nome;
@@ -5,16 +12,30 @@ class Produto{
         this.descricao = descricao;
         this.preco = preco;
     }
-    mostrarProduto(){
-        return `
-            <div class="produto">
-                <h2>${this.nome}</h2>
-                <p>${this.descricao}</p>
-                <div class="preco">R$${this.preco},00</div>
-                <div class="cadastro">Cadastrado em: ${this.dataCadastro}</div>
-            </div>
-                `
-    }
+
+    mostrarProduto() {
+        try{
+          return this.atributos()
+        } catch(erro){
+          console;console.log(erro.message)
+        }
+      }
+
+      atributos() {
+        if (this.nome != "" && this.dataCadastro != "" && this.descricao != "" && this.preco != "") {
+          return `
+          <div class="produto">
+              <h2>${this.nome}</h2>
+              <p>${this.descricao}</p>
+              <div class="preco">R$${this.preco},00</div>
+              <div class="cadastro">Cadastrado em: ${this.dataCadastro}</div>
+          </div>
+              `
+           } else {
+            throw new Errocometido("Está faltando inserir alguma das informações necessárias para elaborar o produto :(")
+          }
+      }
+    
     
 }
 class destaque extends Produto{
@@ -22,21 +43,34 @@ class destaque extends Produto{
         super(nome, dataCadastro, descricao, preco)
         this.imagem = imagem
     }
-    mostrarDestaque(){
-        return `
-                <div class="pDestaque">
-                <img class="imgDestaque" src="${this.imagem}"></img>
-                <h2>${this.nome}</h2>
-                <p>${this.descricao}</p>
-                <div class="precoDestaque">R$${this.preco},00</div>
-                <div class="cadastroDestaque">Cadastrado em: ${this.dataCadastro}</div>
-                </div>
-               `
-    }
+
+    mostrarDestaque() {
+        try{
+          return this.atributos()
+        } catch(erro){
+          console;console.log(erro.message)
+        }
+      }
+
+      atributos() {
+        if (this.nome != "" && this.dataCadastro != "" && this.descricao != "" && this.preco != "" && this.imagem != "") {
+          return `
+          <div class="pDestaque">
+            <img class="imgDestaque" src="${this.imagem}"></img>
+            <h2>${this.nome}</h2>
+            <p>${this.descricao}</p>
+            <div class="precoDestaque">R$${this.preco},00</div>
+            <div class="cadastroDestaque">Cadastrado em: ${this.dataCadastro}</div>
+          </div>
+              `
+           } else {
+            throw new Errocometido("Está faltando inserir alguma das informações necessárias para elaborar o produto :(")
+          }
+      }
 
 }
 
-const produto1 = new Produto("Tapete de Vaquinha", "25/12/2022", "Nosso tapete de vaquinha é o destaque perfeito para qualquer cômodo que ofereça mais do que apenas um aperto sob os pés", 38)
+const produto1 = new Produto("TApete de Vaquinha", "25/12/2022", "Nosso tapete de vaquinha é o destaque perfeito para qualquer cômodo que ofereça mais do que apenas um aperto sob os pés", 38)
 const id1 = document.getElementById("produto1")
 id1.insertAdjacentHTML('afterbegin',produto1.mostrarProduto())
 
