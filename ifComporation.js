@@ -17,7 +17,7 @@ class Produto{
         try{
           return this.atributos()
         } catch(erro){
-          console;console.log(erro.message)
+          console.log(erro)
         }
       }
 
@@ -46,13 +46,13 @@ class destaque extends Produto{
 
     mostrarDestaque() {
         try{
-          return this.atributos()
+          return this.imgdestaque()
         } catch(erro){
-          console;console.log(erro.message)
+          console.log(erro)
         }
       }
 
-      atributos() {
+      imgdestaque() {
         if (this.nome != "" && this.dataCadastro != "" && this.descricao != "" && this.preco != "" && this.imagem != "") {
           return `
           <div class="pDestaque">
@@ -70,18 +70,22 @@ class destaque extends Produto{
 
 }
 
-const produto1 = new Produto("TApete de Vaquinha", "25/12/2022", "Nosso tapete de vaquinha é o destaque perfeito para qualquer cômodo que ofereça mais do que apenas um aperto sob os pés", 38)
-const id1 = document.getElementById("produto1")
+const produto1 = new Produto("Tapete de Vaquinha", "", "Nosso tapete de vaquinha é o destaque perfeito para qualquer cômodo que ofereça mais do que apenas um aperto sob os pés", 38);
+const id1 = document.getElementById("produto1");
 id1.insertAdjacentHTML('afterbegin',produto1.mostrarProduto())
+console.log(produto1)
 
-const produto2 = new Produto("Luminária de sapinho", "02/12/2022", "Caro Ebbo, você ilumina nosso dia (e noite) com sua personalidade brilhante.", 22)
-const id2 = document.getElementById("produto2")
+const produto2 = new Produto("Luminária de sapinho", "02/12/2022", "Caro Ebbo, você ilumina nosso dia (e noite) com sua personalidade brilhante.", 22);
+const id2 = document.getElementById("produto2");
 id2.insertAdjacentHTML('afterbegin',produto2.mostrarProduto())
+console.log(produto2)
 
-const produto3 = new Produto("Vaso de planta de vaquinha", "05/11/2022", "Caro Ebbo, você ilumina nosso dia (e noite) com sua personalidade brilhante.", 18)
-const id3 = document.getElementById("produto3")
+const produto3 = new Produto("Vaso de planta de vaquinha", "05/11/2022", "Caro Ebbo, você ilumina nosso dia (e noite) com sua personalidade brilhante.", 18);
+const id3 = document.getElementById("produto3");
 id3.insertAdjacentHTML('afterbegin',produto3.mostrarProduto())
+console.log(produto3)
 
 const imgDestaque = new destaque("Luminária de Vaquinha", "20/12/2022", "Caro Ebbo, você ilumina nosso dia (e noite) com sua personalidade brilhante.", 20, "https://cdn.shopify.com/s/files/1/0527/2659/5743/products/ShopzokiCowLightOff_1800x1800.jpg?v=1669311428");
-const id4 = document.getElementById("produtoDestaque")
+const id4 = document.getElementById("produtoDestaque");
 id4.insertAdjacentHTML('afterbegin',imgDestaque.mostrarDestaque())
+console.log(imgDestaque)
